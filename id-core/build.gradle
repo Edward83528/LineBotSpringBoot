@@ -1,0 +1,52 @@
+plugins {
+	id "java-library"
+	id 'org.springframework.boot' version '2.6.7'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+}
+
+ext {
+	set("spring-security.version", "5.3.9.RELEASE")
+}
+
+group = 'com.bot.core'
+version = '0.0.1-SNAPSHOT'
+
+configurations {
+	developmentOnly
+	runtimeClasspath {
+		extendsFrom developmentOnly
+	}
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+dependencies {
+	implementation "org.springframework.boot:spring-boot-starter"
+	implementation "org.springframework.boot:spring-boot-starter-security"
+	implementation 'org.springframework.data:spring-data-commons:2.6.0'
+	implementation 'org.jdbi:jdbi3-sqlobject:3.24.1'
+	implementation 'org.jdbi:jdbi3-spring5:3.24.1'
+	implementation 'org.jdbi:jdbi3-jackson2:3.24.1'
+	implementation "io.pebbletemplates:pebble-spring-boot-starter:3.1.5"
+	implementation 'org.apache.commons:commons-lang3:3.12.0'
+	implementation "org.jooq:jool:0.9.14"
+	compileOnly 'org.projectlombok:lombok:1.18.22'
+	implementation 'net.coobird:thumbnailator:0.4.15'
+	compileOnly "javax.servlet:javax.servlet-api:4.0.1"
+	annotationProcessor 'org.projectlombok:lombok:1.18.22'
+	implementation('com.squareup.retrofit2:converter-jackson:2.9.0') {
+		exclude group: 'com.fasterxml.jackson.core'
+		exclude group: 'com.squareup.okhttp3'
+	}
+	implementation 'com.squareup.okhttp3:logging-interceptor:3.14.9'
+	implementation "commons-codec:commons-codec:1.15"
+}
+
+bootJar {
+	enabled = false
+}
+
+jar {
+	enabled = true
+}

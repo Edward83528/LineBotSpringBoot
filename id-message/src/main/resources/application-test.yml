@@ -1,0 +1,49 @@
+server:
+  error:
+    path: /error
+    whitelabel:
+      enabled: false
+  port: 6666
+  servlet:
+    context-parameters:
+      defaultHtmlEscape: true
+    encoding:
+      charset: "UTF-8"
+      force: true
+      force-request: true
+      force-response: true
+    session:
+      timeout: 60m
+      cookie:
+        http-only: true
+        secure: true
+      tracking-modes: cookie
+  forward-headers-strategy: NATIVE
+
+spring:
+  application:
+    name: id-message
+
+  devtools:
+    livereload:
+      enabled: false
+    restart:
+      enabled: true
+
+  mvc:
+    static-path-pattern: /static/**
+
+pebble:
+  suffix: .peb
+  cache: false
+  expose-request-attributes: true
+  expose-session-attributes: false
+
+line:
+  bot:
+    channelToken: ""
+    channelSecret: ""
+
+app:
+  message:
+    host: ""
